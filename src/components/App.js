@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Provider } from 'react-redux';
 import store from '../store';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
@@ -23,14 +23,16 @@ class App extends Component {
     return (
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <Switch>
-              <GlobalStyle />
-              <Route exact path="/" component={Cars} />
-              <Route path="/:carId" component={Car} />
-              <Route component={NotFound} />
-            </Switch>
-          </BrowserRouter>
+          <Fragment>
+            <GlobalStyle theme={theme} />
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={Cars} />
+                <Route path="/:carId" component={Car} />
+                <Route component={NotFound} />
+              </Switch>
+            </BrowserRouter>
+          </Fragment>
         </ThemeProvider>
       </Provider>
     );
