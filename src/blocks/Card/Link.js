@@ -1,9 +1,19 @@
+import React from 'react';
 import styled from 'styled-components';
 import A from '../../elements/A';
 
-const Link = styled(A)`
+const GridCell = styled.div`
   grid-area: link;
-  align-self: end;
+  display: flex;
+  align-items: end;
 `;
+
+const Link = ({ to, children }) => {
+  return (
+    <GridCell>
+      <A to={to}>{children}</A>
+    </GridCell>
+  );
+};
 
 export default Link;
