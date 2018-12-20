@@ -9,6 +9,7 @@ const Image = styled.div`
   background-image: url('${props => props.src}');
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: contain
 `;
 
 export default Image;
