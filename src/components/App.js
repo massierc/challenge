@@ -10,6 +10,7 @@ import Car from './Car';
 import NotFound from './NotFound';
 
 import Nav from '../blocks/Nav';
+import Footer from '../blocks/Footer';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -46,6 +47,9 @@ class App extends Component {
                   <Route path="/:carId" component={Car} />
                   <Route component={NotFound} />
                 </Switch>
+                <Footer>
+                  <Footer.Content>© AUTO1 Group 2018</Footer.Content>
+                </Footer>
               </div>
             </BrowserRouter>
           </Fragment>
