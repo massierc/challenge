@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Card from '../blocks/Card';
 import { carsActions } from '../store/actions';
+import { carsHelpers } from '../helpers';
 
 const mapStateToProps = state => ({
   cars: state.getIn(['cars', 'list'])
@@ -18,8 +19,17 @@ class Cars extends Component {
 
     return (
       <Fragment>
-        {cars.map(car => {
-          return <div>{car.get('manufacturerName')}</div>;
+        {cars.map(obj => {
+          console.log(obj.toJS());
+          const car = carsHelpers.getCarDetailsForCard(obj);
+          return (
+            <Card key={car.id}>
+              <Card.Image src={car.image} />
+              <Card.Header>{car.header}</Card.Header>
+              <Card.Description>{car.description}</Card.Description>
+              <Card.Link href={car.friendlyId}>View Details</Card.Link>
+            </Card>
+          );
         })}
       </Fragment>
     );
