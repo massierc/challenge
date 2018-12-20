@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import theme from '../theme';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Cars from './Cars';
 import Car from './Car';
@@ -32,13 +32,13 @@ class App extends Component {
               <div>
                 <Nav>
                   <Nav.Logo src={`${process.env.PUBLIC_URL}/logo.png`} />
-                  <Nav.Link to="#" linkId={0}>
+                  <Nav.Link to="#" id={`nav-link-${0}`}>
                     Purchase
                   </Nav.Link>
-                  <Nav.Link to="#" linkId={1}>
+                  <Nav.Link to="#" id={`nav-link-${1}`}>
                     My Orders
                   </Nav.Link>
-                  <Nav.Link to="#" linkId={2}>
+                  <Nav.Link to="#" id={`nav-link-${2}`}>
                     Sell
                   </Nav.Link>
                 </Nav>

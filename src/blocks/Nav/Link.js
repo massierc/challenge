@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import A from '../../elements/A';
 
 const Link = styled(A)`
-  grid-area: ${props => `link${props.linkId}`};
+  grid-area: ${props => props.id};
   justify-self: center;
   align-self: center;
   color: ${props => props.theme.colors.text};
