@@ -1,15 +1,8 @@
 import styled from 'styled-components';
+import Img from '../../elements/Img';
 
-const Image = styled.div`
+const Image = styled(Img)`
   grid-area: image;
-  justify-self: center;
-  align-self: center;
-  width: 100%;
-  height: 100%;
-  background-image: url('${props => props.src}');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain
 `;
 
 export default Image;
