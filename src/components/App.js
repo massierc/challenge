@@ -3,11 +3,13 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import theme from '../theme';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 import Cars from './Cars';
 import Car from './Car';
 import NotFound from './NotFound';
+
+import Nav from '../blocks/Nav';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -26,11 +28,25 @@ class App extends Component {
           <Fragment>
             <GlobalStyle theme={theme} />
             <BrowserRouter>
-              <Switch>
-                <Route exact path="/" component={Cars} />
-                <Route path="/:carId" component={Car} />
-                <Route component={NotFound} />
-              </Switch>
+              <div>
+                <Nav>
+                  <Nav.Logo src={`${process.env.PUBLIC_URL}/logo.png`} />
+                  <Nav.Link to="#" linkId={0}>
+                    Purchase
+                  </Nav.Link>
+                  <Nav.Link to="#" linkId={1}>
+                    My Orders
+                  </Nav.Link>
+                  <Nav.Link to="#" linkId={2}>
+                    Sell
+                  </Nav.Link>
+                </Nav>
+                <Switch>
+                  <Route exact path="/" component={Cars} />
+                  <Route path="/:carId" component={Car} />
+                  <Route component={NotFound} />
+                </Switch>
+              </div>
             </BrowserRouter>
           </Fragment>
         </ThemeProvider>
