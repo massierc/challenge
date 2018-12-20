@@ -20,14 +20,13 @@ class Cars extends Component {
     return (
       <Fragment>
         {cars.map(obj => {
-          console.log(obj.toJS());
           const car = carsHelpers.getCarDetailsForCard(obj);
           return (
             <Card key={car.id}>
               <Card.Image src={car.image} />
               <Card.Header>{car.header}</Card.Header>
               <Card.Description>{car.description}</Card.Description>
-              <Card.Link href={car.friendlyId}>View Details</Card.Link>
+              <Card.Link to={car.friendlyId}>View Details</Card.Link>
             </Card>
           );
         })}
