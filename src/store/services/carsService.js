@@ -1,13 +1,16 @@
-import { fromJS } from 'immutable';
+import { queryHelpers } from '../../helpers';
 
-const fetchCars = () => {
-  return fetch(`${process.env.REACT_APP_MOCK_SERVER_URL}/cars`, {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }).then(normalizeData);
+const fetchCars = params => {
+  return fetch(
+    `${process.env.REACT_APP_MOCK_SERVER_URL}/cars${
+      params ? queryHelpers.addParams(params) : ''
+    }`,
+    {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
+  ).then(queryHelpers.normalizeData);
 };
-
-const normalizeData = rawData => rawData.json().then(data => fromJS(data));
 
 const carsService = { fetchCars };
 

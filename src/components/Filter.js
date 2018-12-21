@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { filtersActions } from '../store/actions';
+import { filtersActions, carsActions } from '../store/actions';
 import Form from '../blocks/Form';
 
 const mapStateToProps = state => ({
@@ -14,9 +14,14 @@ class Cars extends Component {
     this.props.fetchManufacturers();
   }
 
+  handleSubmit = event => {
+    this.props.fetchCars({ manufacturer: 'audi' });
+    event.preventDefault();
+  };
+
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Group>
           <Form.Label>Color</Form.Label>
           <Form.Select />
@@ -33,5 +38,5 @@ class Cars extends Component {
 
 export default connect(
   mapStateToProps,
-  filtersActions
+  { ...filtersActions, ...carsActions }
 )(Cars);

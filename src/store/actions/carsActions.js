@@ -1,9 +1,9 @@
 import { carsConstants } from '../constants';
 import { carsService } from '../services';
 
-const fetchCars = () => dispatch => {
+const fetchCars = params => dispatch => {
   carsService
-    .fetchCars()
+    .fetchCars(params)
     .then(cars => dispatch({ type: carsConstants.FETCH_CARS, payload: cars }))
     .catch(err => console.log(err));
 };
