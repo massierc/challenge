@@ -19,6 +19,17 @@ class Cars extends Component {
 
     return (
       <Fragment>
+        <Form>
+          <Form.Group>
+            <Form.Label>Color</Form.Label>
+            <Form.Select />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Manufacturer</Form.Label>
+            <Form.Select />
+          </Form.Group>
+          <Form.Button />
+        </Form>
         {cars.map(obj => {
           const car = carsHelpers.getCarDetailsForCard(obj);
           return (
