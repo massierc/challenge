@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Card from '../blocks/Card';
 import { carsActions } from '../store/actions';
 import { carsHelpers } from '../helpers';
 
 import Filter from './Filter';
+import Card from '../blocks/Card';
 
 const mapStateToProps = state => ({
   cars: state.getIn(['cars', 'list'])
