@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { carsActions } from '../store/actions';
 
 import FormGroup from '../elements/FormGroup';
 import Label from '../elements/Label';
@@ -17,7 +18,10 @@ class Cars extends Component {
   };
 
   handleChange = value => {
-    this.setState({ sort: value });
+    this.setState({ sort: value }, () => {
+      const { sort } = this.state;
+      this.props.fetchCars({ sort: sort ? sort.value : '' });
+    });
   };
 
   render() {
@@ -28,7 +32,7 @@ class Cars extends Component {
           options={[
             { value: 'None', label: 'None' },
             { value: 'asc', label: 'Mileage - Ascending' },
-            { value: 'desc', label: 'Mileage - Descending' }
+            { value: 'des', label: 'Mileage - Descending' }
           ]}
           value={this.state.sort}
           onChange={this.handleChange}
@@ -39,6 +43,6 @@ class Cars extends Component {
 }
 
 export default connect(
-  mapStateToProps
-  // sortActions
+  mapStateToProps,
+  carsActions
 )(Cars);
