@@ -5,8 +5,8 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import theme from '../theme';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import IndexPage from './IndexPage';
-import Car from './Car';
+import IndexView from './IndexView';
+import ShowView from './ShowView';
 import NotFound from './NotFound';
 import Nav from '../blocks/Nav';
 import Footer from '../blocks/Footer';
@@ -47,8 +47,8 @@ class App extends Component {
                   </Nav.Link>
                 </Nav>
                 <Switch>
-                  <Route exact path="/" component={IndexPage} />
-                  <Route path="/:carId" component={Car} />
+                  <Route exact path="/" component={IndexView} />
+                  <Route path="/:carId" component={ShowView} />
                   <Route component={NotFound} />
                 </Switch>
                 <Footer>

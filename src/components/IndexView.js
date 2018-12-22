@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
   subtitle: viewHelpers.indexSubtitle(state)
 });
 
-const IndexPage = props => {
+const IndexView = props => {
   return (
     <Index>
       <Heading>
@@ -42,4 +42,4 @@ const IndexPage = props => {
   );
 };
 
-export default connect(mapStateToProps)(IndexPage);
+export default connect(mapStateToProps)(IndexView);

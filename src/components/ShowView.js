@@ -23,7 +23,7 @@ const Banner = styled(Img)`
   background-color: ${props => props.theme.colors.grey};
 `;
 
-class Car extends Component {
+class ShowPage extends Component {
   state = {
     loading: true
   };
@@ -74,4 +74,4 @@ class Car extends Component {
 export default connect(
   mapStateToProps,
   carsActions
-)(Car);
+)(ShowPage);
