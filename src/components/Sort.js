@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { carsActions } from '../store/actions';
@@ -11,6 +12,10 @@ const mapStateToProps = state => ({
   colors: state.getIn(['cars', 'colors']),
   manufacturers: state.getIn(['cars', 'manufacturers'])
 });
+
+const StyledSort = styled.div`
+  grid-area: sort;
+`;
 
 class Cars extends Component {
   state = {
@@ -26,18 +31,20 @@ class Cars extends Component {
 
   render() {
     return (
-      <FormGroup>
-        <Label>Sort by</Label>
-        <Select
-          options={[
-            { value: 'None', label: 'None' },
-            { value: 'asc', label: 'Mileage - Ascending' },
-            { value: 'des', label: 'Mileage - Descending' }
-          ]}
-          value={this.state.sort}
-          onChange={this.handleChange}
-        />
-      </FormGroup>
+      <StyledSort>
+        <FormGroup>
+          <Label>Sort by</Label>
+          <Select
+            options={[
+              { value: 'None', label: 'None' },
+              { value: 'asc', label: 'Mileage - Ascending' },
+              { value: 'des', label: 'Mileage - Descending' }
+            ]}
+            value={this.state.sort}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+      </StyledSort>
     );
   }
 }
