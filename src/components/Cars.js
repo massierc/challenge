@@ -9,7 +9,8 @@ import Card from '../blocks/Card';
 
 const mapStateToProps = state => ({
   cars: state.getIn(['cars', 'cars']),
-  params: state.getIn(['cars', 'params'])
+  params: state.getIn(['cars', 'params']),
+  loading: state.getIn(['cars', 'loading'])
 });
 
 const StyledCars = styled.div`
@@ -23,26 +24,34 @@ class Cars extends Component {
   }
 
   render() {
-    const { cars } = this.props;
+    const { cars, loading } = this.props;
 
-    return (
-      <StyledCars>
-        {cars.map((obj, i) => {
-          const car = viewHelpers.parseCar(obj);
-          return (
-            <Card
-              key={car.id}
-              spacing={i === cars.size - 1 ? null : [0, 0, 2, 0]}
-            >
-              <Card.Image src={car.image} />
-              <Card.Header>{car.header}</Card.Header>
-              <Card.Description>{car.description}</Card.Description>
-              <Card.Link to={car.url}>View Details</Card.Link>
-            </Card>
-          );
-        })}
-      </StyledCars>
-    );
+    if (loading) {
+      return (
+        <StyledCars>
+          <div>Loading...</div>
+        </StyledCars>
+      );
+    } else {
+      return (
+        <StyledCars>
+          {cars.map((obj, i) => {
+            const car = viewHelpers.parseCar(obj);
+            return (
+              <Card
+                key={car.id}
+                spacing={i === cars.size - 1 ? null : [0, 0, 2, 0]}
+              >
+                <Card.Image src={car.image} />
+                <Card.Header>{car.header}</Card.Header>
+                <Card.Description>{car.description}</Card.Description>
+                <Card.Link to={car.url}>View Details</Card.Link>
+              </Card>
+            );
+          })}
+        </StyledCars>
+      );
+    }
   }
 }
 

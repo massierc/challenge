@@ -10,7 +10,8 @@ import Subtitle from '../elements/Subtitle';
 import Img from '../elements/Img';
 
 const mapStateToProps = state => ({
-  car: state.getIn(['cars', 'current'])
+  car: state.getIn(['cars', 'current']),
+  loading: state.getIn(['cars', 'loading'])
 });
 
 const Banner = styled(Img)`
@@ -30,20 +31,19 @@ class Car extends Component {
   }
 
   render() {
-    const { loading } = this.state;
-    const { car } = this.props;
+    const { loading } = this.props;
 
     if (loading) {
-      return <div>loading...</div>;
+      return <div>Loading...</div>;
     } else {
+      const car = viewHelpers.parseCar(this.props.car);
+      console.log(car);
       return (
         <div>
           <Banner src={car.image} />
           <Heading>
-            <Title>
-              {car.manufacturer} {car.model}
-            </Title>
-            <Subtitle>test</Subtitle>
+            <Title>{car.header}</Title>
+            <Subtitle>{car.description}</Subtitle>
           </Heading>
         </div>
       );
