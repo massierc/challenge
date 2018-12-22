@@ -7,7 +7,12 @@ const initialState = Map({
   totalPageCount: null,
   colors: List(),
   manufacturers: List(),
-  currentPage: 1
+  params: Map({
+    page: 1,
+    color: null,
+    manufacturer: null,
+    sort: null
+  })
 });
 
 const carsReducer = (state = initialState, action) => {
@@ -33,9 +38,9 @@ const carsReducer = (state = initialState, action) => {
           label: formatHelpers.capitalize(man.get('name'))
         }))
       );
-    case carsConstants.SET_PAGE:
-      if (!action.payload) return;
-      return state.set('currentPage', action.payload);
+    case carsConstants.SET_PARAMS:
+      const { param, value } = action.payload;
+      return state.setIn(['params', param], value);
     default:
       return state;
   }

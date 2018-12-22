@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { carsActions } from '../store/actions';
-import { viewHelpers } from '../helpers';
 
 import A from '../elements/A';
 import Text from '../elements/Text';
 
 const mapStateToProps = state => ({
   total: state.getIn(['cars', 'totalPageCount']),
-  current: state.getIn(['cars', 'currentPage'])
+  params: state.getIn(['cars', 'params'])
 });
 
 const StyledPagination = styled.div`
@@ -30,7 +29,8 @@ const StyledText = styled(Text)`
 
 class Pagination extends Component {
   handleClick = which => () => {
-    const { total, current } = this.props;
+    const { total, params } = this.props;
+    const current = params.get('page');
     const page =
       which === 'previous'
         ? current - 1
@@ -40,8 +40,9 @@ class Pagination extends Component {
         ? total
         : 1;
 
-    if (this.isWithinPageLimits(which, current, total))
-      this.props.fetchCars({ page: page });
+    if (this.isWithinPageLimits(which, current, total)) {
+      this.props.fetchCars(this.props.params.set('page', page));
+    }
   };
 
   isWithinPageLimits = (which, current, total) =>
@@ -51,7 +52,8 @@ class Pagination extends Component {
     );
 
   render() {
-    const { total, current } = this.props;
+    const { total, params } = this.props;
+    const current = params.get('page');
     const { handleClick } = this;
 
     return (

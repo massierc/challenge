@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Map } from 'immutable';
 import { carsActions } from '../store/actions';
 
 import Form from '../blocks/Form';
@@ -37,13 +38,12 @@ class Filter extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { color, manufacturer } = this.state;
-    if (!color && !manufacturer) return;
     let query = {
       color: color ? color.value : '',
-      manufacturer: manufacturer ? manufacturer.value : '',
-      page: 1
+      manufacturer: manufacturer ? manufacturer.value : ''
     };
-    this.props.fetchCars(query);
+    if (color || manufacturer) query['page'] = 1;
+    this.props.fetchCars(Map(query));
   };
 
   render() {

@@ -4,9 +4,8 @@ const normalizeData = rawData => rawData.json().then(data => fromJS(data));
 
 const addParams = params => {
   const esc = encodeURIComponent;
-  const query = Object.keys(params)
-    .map(k => esc(k) + '=' + esc(params[k]))
-    .join('&');
+  const filtered = params.filter(p => p);
+  const query = filtered.map((v, k) => esc(k) + '=' + v).join('&');
   return `?${query}`;
 };
 

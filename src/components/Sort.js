@@ -9,8 +9,7 @@ import Label from '../elements/Label';
 import Select from '../elements/Select';
 
 const mapStateToProps = state => ({
-  colors: state.getIn(['cars', 'colors']),
-  manufacturers: state.getIn(['cars', 'manufacturers'])
+  params: state.getIn(['cars', 'params'])
 });
 
 const StyledSort = styled.div`
@@ -25,7 +24,9 @@ class Cars extends Component {
   handleChange = value => {
     this.setState({ sort: value }, () => {
       const { sort } = this.state;
-      this.props.fetchCars({ sort: sort ? sort.value : '' });
+      const { params } = this.props;
+      if (!sort) return;
+      this.props.fetchCars(params.set('sort', sort.value));
     });
   };
 

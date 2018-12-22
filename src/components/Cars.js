@@ -8,7 +8,8 @@ import { carsHelpers } from '../helpers';
 import Card from '../blocks/Card';
 
 const mapStateToProps = state => ({
-  cars: state.getIn(['cars', 'cars'])
+  cars: state.getIn(['cars', 'cars']),
+  params: state.getIn(['cars', 'params'])
 });
 
 const StyledCars = styled.div`
@@ -18,7 +19,7 @@ const StyledCars = styled.div`
 
 class Cars extends Component {
   componentWillMount() {
-    this.props.fetchCars();
+    this.props.fetchCars(this.props.params);
   }
 
   render() {
