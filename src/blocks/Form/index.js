@@ -8,7 +8,7 @@ import Select from '../../elements/Select';
 const Form = styled.form`
   display: grid;
   padding: ${props => props.theme.spacing.l};
-  border: 2px solid ${props => props.theme.colors.grey};
+  border: 1px solid ${props => props.theme.colors.grey};
 `;
 
 Form.Group = Group;

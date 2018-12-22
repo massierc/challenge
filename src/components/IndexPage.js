@@ -17,7 +17,7 @@ const Index = styled.div`
     'filter . heading'
     'filter . cars'
     '. . cars';
-  padding: ${props => props.theme.spacing.m};
+  padding: ${props => props.theme.spacing.l} 4em;
 `;
 
 const IndexPage = () => {

@@ -23,7 +23,7 @@ const StyledSelect = props => {
       styles={{
         control: (provided, state) => ({
           ...provided,
-          border: `2px solid ${props.theme.colors.grey}`
+          border: `1px solid ${props.theme.colors.grey}`
         }),
         indicatorSeparator: () => ({})
       }}
