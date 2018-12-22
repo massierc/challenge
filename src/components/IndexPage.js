@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Filter from './Filter';
 import Cars from './Cars';
 import Sort from './Sort';
+import Pagination from './Pagination';
 import Heading from '../blocks/Heading';
 import Title from '../elements/H2';
 import Subtitle from '../elements/Subtitle';
@@ -15,7 +16,8 @@ const Index = styled.div`
   grid-template-areas:
     'filter . heading'
     'filter . cars'
-    '. . cars';
+    '. . cars'
+    '. . pagination';
   padding: ${props => props.theme.spacing.l} 4em;
 `;
 
@@ -29,6 +31,7 @@ const IndexPage = () => {
       </Heading>
       <Filter />
       <Cars />
+      <Pagination />
     </Index>
   );
 };

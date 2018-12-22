@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
 
 const StyledCars = styled.div`
   grid-area: cars;
+  padding-bottom: ${props => props.theme.spacing.l};
 `;
 
 class Cars extends Component {
@@ -25,10 +26,13 @@ class Cars extends Component {
 
     return (
       <StyledCars>
-        {cars.map(obj => {
+        {cars.map((obj, i) => {
           const car = carsHelpers.getCarDetailsForCard(obj);
           return (
-            <Card key={car.id} spacing={[0, 0, 2, 0]}>
+            <Card
+              key={car.id}
+              spacing={i === cars.size - 1 ? null : [0, 0, 2, 0]}
+            >
               <Card.Image src={car.image} />
               <Card.Header>{car.header}</Card.Header>
               <Card.Description>{car.description}</Card.Description>
