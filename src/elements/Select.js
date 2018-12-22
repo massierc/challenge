@@ -11,7 +11,7 @@ const StyledSelect = props => {
       theme={theme => ({
         ...theme,
         borderRadius: 2,
-        fontSize: props.theme.font.size.p1,
+        fontSize: props.theme.font.size.t1,
         colors: {
           ...theme.colors,
           primary: props.theme.colors.primary,
@@ -32,7 +32,7 @@ const StyledSelect = props => {
 };
 
 const Select = styled(StyledSelect)`
-  font-size: ${props => props.theme.font.size.p1};
+  font-size: ${props => props.theme.font.size.t1};
 `;
 
 export default withTheme(Select);

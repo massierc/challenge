@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Filter from './Filter';
 import Cars from './Cars';
-
 import Sort from './Sort';
 import Heading from '../blocks/Heading';
 import Title from '../elements/H2';

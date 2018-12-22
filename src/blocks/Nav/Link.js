@@ -6,7 +6,7 @@ const Link = styled(A)`
   justify-self: center;
   align-self: center;
   color: ${props => props.theme.colors.text};
-  font-size: ${props => props.theme.font.size.p1};
+  font-size: ${props => props.theme.font.size.t1};
   padding-left: ${props => props.theme.spacing.l};
 `;
 

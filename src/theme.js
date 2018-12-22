@@ -14,8 +14,8 @@ const theme = {
       h1: '32px',
       h2: '18px',
       subtitle: '18px',
-      p1: '14px',
-      p2: '12px'
+      t1: '14px',
+      t2: '12px'
     },
     weight: {
       header: 'bold',
