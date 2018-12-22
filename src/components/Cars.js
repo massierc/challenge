@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { carsActions } from '../store/actions';
 import { carsHelpers } from '../helpers';
 
-import Filter from './Filter';
 import Card from '../blocks/Card';
 
 const mapStateToProps = state => ({
@@ -21,7 +20,6 @@ class Cars extends Component {
 
     return (
       <Fragment>
-        <Filter />
         {cars.map(obj => {
           const car = carsHelpers.getCarDetailsForCard(obj);
           return (

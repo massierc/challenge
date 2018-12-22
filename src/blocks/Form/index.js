@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import Group from './Group';
 import Button from './Button';
-
+import Group from '../../elements/FormGroup';
 import Label from '../../elements/Label';
 import Select from '../../elements/Select';
 

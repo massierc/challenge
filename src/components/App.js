@@ -5,7 +5,7 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import theme from '../theme';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Cars from './Cars';
+import IndexPage from './IndexPage';
 import Car from './Car';
 import NotFound from './NotFound';
 
@@ -43,7 +43,7 @@ class App extends Component {
                   </Nav.Link>
                 </Nav>
                 <Switch>
-                  <Route exact path="/" component={Cars} />
+                  <Route exact path="/" component={IndexPage} />
                   <Route path="/:carId" component={Car} />
                   <Route component={NotFound} />
                 </Switch>
