@@ -7,8 +7,8 @@ import Label from '../elements/Label';
 import Select from '../elements/Select';
 
 const mapStateToProps = state => ({
-  colors: state.getIn(['filters', 'colors']),
-  manufacturers: state.getIn(['filters', 'manufacturers'])
+  colors: state.getIn(['cars', 'colors']),
+  manufacturers: state.getIn(['cars', 'manufacturers'])
 });
 
 class Cars extends Component {
@@ -17,7 +17,6 @@ class Cars extends Component {
   };
 
   handleChange = value => {
-    console.log(value);
     this.setState({ sort: value });
   };
 

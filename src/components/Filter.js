@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { filtersActions, carsActions } from '../store/actions';
+import { carsActions } from '../store/actions';
 
 import Form from '../blocks/Form';
 
 const mapStateToProps = state => ({
-  colors: state.getIn(['filters', 'colors']),
-  manufacturers: state.getIn(['filters', 'manufacturers'])
+  colors: state.getIn(['cars', 'colors']),
+  manufacturers: state.getIn(['cars', 'manufacturers'])
 });
 
 class Cars extends Component {
@@ -39,7 +39,6 @@ class Cars extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group>
@@ -70,5 +69,5 @@ Cars.propTypes = {
 
 export default connect(
   mapStateToProps,
-  { ...filtersActions, ...carsActions }
+  carsActions
 )(Cars);

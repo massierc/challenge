@@ -7,7 +7,7 @@ import { carsHelpers } from '../helpers';
 import Card from '../blocks/Card';
 
 const mapStateToProps = state => ({
-  cars: state.getIn(['cars', 'list'])
+  cars: state.getIn(['cars', 'cars'])
 });
 
 class Cars extends Component {
