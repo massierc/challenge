@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Group = styled.div`
+const FormGroup = styled.div`
   display: grid;
   padding-bottom: ${props => props.theme.spacing.m};
   &:last-of-type {
@@ -8,4 +8,4 @@ const Group = styled.div`
   }
 `;
 
-export default Group;
+export default FormGroup;
