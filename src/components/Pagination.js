@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { carsActions } from '../store/actions';
 
 import A from '../elements/A';
 import Text from '../elements/Text';
+
+const mapStateToProps = state => ({
+  cars: state.getIn(['cars', 'cars'])
+});
 
 const StyledPagination = styled.div`
   grid-area: pagination;
@@ -32,4 +38,7 @@ const Pagination = () => {
   );
 };
 
-export default Pagination;
+export default connect(
+  mapStateToProps,
+  carsActions
+)(Pagination);

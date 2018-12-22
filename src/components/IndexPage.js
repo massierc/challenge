@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { viewHelpers } from '../helpers';
 
 import Filter from './Filter';
 import Cars from './Cars';
@@ -21,12 +23,16 @@ const Index = styled.div`
   padding: ${props => props.theme.spacing.l} 4em;
 `;
 
-const IndexPage = () => {
+const mapStateToProps = state => ({
+  subtitle: viewHelpers.indexSubtitle(state)
+});
+
+const IndexPage = props => {
   return (
     <Index>
       <Heading>
         <Title>Available cars</Title>
-        <Subtitle>Showing X of X results</Subtitle>
+        <Subtitle>{props.subtitle}</Subtitle>
         <Sort />
       </Heading>
       <Filter />
@@ -36,4 +42,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default connect(mapStateToProps)(IndexPage);
