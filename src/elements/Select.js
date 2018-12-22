@@ -7,7 +7,6 @@ const StyledSelect = props => {
     <ReactSelect
       {...props}
       isSearchable
-      isClearable
       theme={theme => ({
         ...theme,
         borderRadius: 2,

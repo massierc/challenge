@@ -56,6 +56,7 @@ class Filter extends Component {
               options={this.props.colors}
               value={this.state.color}
               onChange={this.handleChange('color')}
+              isClearable
             />
           </Form.Group>
           <Form.Group>
@@ -64,6 +65,7 @@ class Filter extends Component {
               options={this.props.manufacturers}
               value={this.state.manufacturer}
               onChange={this.handleChange('manufacturer')}
+              isClearable
             />
           </Form.Group>
           <Form.Button value="Filter" />

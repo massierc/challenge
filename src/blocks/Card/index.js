@@ -5,6 +5,7 @@ import Image from './Image';
 import Header from './Header';
 import Description from './Description';
 import Link from './Link';
+import Placeholder from '../../elements/Placeholder';
 
 const Card = styled.div.attrs(props => ({
   margin: utils.getMarginFromProp(props)
@@ -25,5 +26,6 @@ Card.Image = Image;
 Card.Header = Header;
 Card.Description = Description;
 Card.Link = Link;
+Card.Placeholder = Placeholder;
 
 export default Card;
