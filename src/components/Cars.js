@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { carsActions } from '../store/actions';
-import { carsHelpers } from '../helpers';
+import { viewHelpers } from '../helpers';
 
 import Card from '../blocks/Card';
 
@@ -28,7 +28,7 @@ class Cars extends Component {
     return (
       <StyledCars>
         {cars.map((obj, i) => {
-          const car = carsHelpers.getCarDetailsForCard(obj);
+          const car = viewHelpers.parseCar(obj);
           return (
             <Card
               key={car.id}

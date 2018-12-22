@@ -1,5 +1,4 @@
 import { queryHelpers } from '../../helpers';
-import { fromJS } from 'immutable';
 
 const fetchCars = params => {
   return fetch(

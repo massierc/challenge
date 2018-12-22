@@ -8,9 +8,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import IndexPage from './IndexPage';
 import Car from './Car';
 import NotFound from './NotFound';
-
 import Nav from '../blocks/Nav';
 import Footer from '../blocks/Footer';
+import A from '../elements/A';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -31,7 +31,11 @@ class App extends Component {
             <BrowserRouter>
               <div>
                 <Nav>
-                  <Nav.Logo src={`${process.env.PUBLIC_URL}/logo.png`} />
+                  <Nav.Logo
+                    as={A}
+                    to="/"
+                    src={`${process.env.PUBLIC_URL}/logo.png`}
+                  />
                   <Nav.Link to="#" id={`nav-link-${0}`}>
                     Purchase
                   </Nav.Link>

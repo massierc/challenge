@@ -1,3 +1,17 @@
+const toUrl = ({ id, manufacturer, model }) => {
+  const safeManufacturer = safeUri(manufacturer);
+  const safeModel = safeUri(model);
+  return `${safeManufacturer}-${safeModel}-${id}`;
+};
+
+const safeUri = str =>
+  encodeURIComponent(
+    str
+      .toLowerCase()
+      .split(' ')
+      .join('-')
+  );
+
 const numberWithSeparator = num =>
   num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
@@ -23,6 +37,12 @@ const getMarginFromProp = props => () => {
   }
 };
 
-const formatHelpers = { numberWithSeparator, capitalize, getMarginFromProp };
+const utils = {
+  toUrl,
+  safeUri,
+  numberWithSeparator,
+  capitalize,
+  getMarginFromProp
+};
 
-export default formatHelpers;
+export default utils;

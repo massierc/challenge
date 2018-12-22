@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { formatHelpers } from '../../helpers';
+import { utils } from '../../helpers';
 
 import Image from './Image';
 import Header from './Header';
@@ -7,7 +7,7 @@ import Description from './Description';
 import Link from './Link';
 
 const Card = styled.div.attrs(props => ({
-  margin: formatHelpers.getMarginFromProp(props)
+  margin: utils.getMarginFromProp(props)
 }))`
   display: grid;
   grid-template-columns: 15% 1em auto;

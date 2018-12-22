@@ -1,6 +1,6 @@
 import { carsConstants } from '../constants';
 import { Map, List } from 'immutable';
-import { formatHelpers } from '../../helpers';
+import { utils } from '../../helpers';
 
 const initialState = Map({
   cars: List(),
@@ -23,13 +23,13 @@ const carsReducer = (state = initialState, action) => {
         .set('cars', action.payload.get('cars'))
         .set('totalPageCount', action.payload.get('totalPageCount'));
     case carsConstants.FETCH_CAR:
-      return state.set('current', action.payload);
+      return state.set('current', action.payload.get('car'));
     case carsConstants.FETCH_COLORS:
       return state.set(
         'colors',
         action.payload.get('colors').map(col => ({
           value: col,
-          label: formatHelpers.capitalize(col)
+          label: utils.capitalize(col)
         }))
       );
     case carsConstants.FETCH_MANUFACTURERS:
@@ -38,7 +38,7 @@ const carsReducer = (state = initialState, action) => {
         action.payload.get('manufacturers').map(man => ({
           ...man,
           value: man.get('name'),
-          label: formatHelpers.capitalize(man.get('name'))
+          label: utils.capitalize(man.get('name'))
         }))
       );
     case carsConstants.SET_PARAMS:
