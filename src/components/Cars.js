@@ -28,7 +28,7 @@ class Cars extends Component {
         {cars.map(obj => {
           const car = carsHelpers.getCarDetailsForCard(obj);
           return (
-            <Card key={car.id}>
+            <Card key={car.id} spacing={[0, 0, 2, 0]}>
               <Card.Image src={car.image} />
               <Card.Header>{car.header}</Card.Header>
               <Card.Description>{car.description}</Card.Description>
