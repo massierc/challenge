@@ -12,6 +12,7 @@ const Nav = styled.nav`
   grid-template-areas: 'logo . ${props =>
     [...Array(props.children.length - 1)].map((_el, i) => `nav-link-${i} `)}';
   padding: 0 4em;
+  border-bottom: 1px solid ${props => props.theme.colors.grey};
 `;
 
 Nav.Logo = Logo;
