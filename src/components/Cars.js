@@ -18,7 +18,7 @@ const StyledCars = styled.div`
 `;
 
 class Cars extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchCars(this.props.params);
   }
 

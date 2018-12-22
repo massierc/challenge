@@ -10,7 +10,14 @@ const fetchCars = params => {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     }
-  ).then(queryHelpers.normalizeData);
+  ).then(normalizeData);
+};
+
+const fetchCar = id => {
+  return fetch(`${process.env.REACT_APP_MOCK_SERVER_URL}/cars/${id}`, {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }).then(normalizeData);
 };
 
 const fetchColors = () => {
@@ -27,8 +34,8 @@ const fetchManufacturers = () => {
   }).then(normalizeData);
 };
 
-const normalizeData = rawData => rawData.json().then(data => fromJS(data));
+const { normalizeData } = queryHelpers;
 
-const carsService = { fetchCars, fetchColors, fetchManufacturers };
+const carsService = { fetchCars, fetchCar, fetchColors, fetchManufacturers };
 
 export default carsService;

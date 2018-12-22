@@ -4,6 +4,7 @@ import { formatHelpers } from '../../helpers';
 
 const initialState = Map({
   cars: List(),
+  current: Map(),
   totalPageCount: null,
   colors: List(),
   manufacturers: List(),
@@ -21,6 +22,8 @@ const carsReducer = (state = initialState, action) => {
       return state
         .set('cars', action.payload.get('cars'))
         .set('totalPageCount', action.payload.get('totalPageCount'));
+    case carsConstants.FETCH_CAR:
+      return state.set('current', action.payload);
     case carsConstants.FETCH_COLORS:
       return state.set(
         'colors',

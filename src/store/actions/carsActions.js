@@ -18,6 +18,13 @@ const fetchCars = params => dispatch => {
     .catch(err => console.log(err));
 };
 
+const fetchCar = id => dispatch => {
+  carsService
+    .fetchCar(id)
+    .then(car => dispatch({ type: carsConstants.FETCH_CAR, payload: car }))
+    .catch(err => console.log(err));
+};
+
 const fetchColors = () => dispatch => {
   carsService
     .fetchColors()
@@ -41,6 +48,7 @@ const fetchManufacturers = () => dispatch => {
 
 const carsActions = {
   fetchCars,
+  fetchCar,
   fetchColors,
   fetchManufacturers
 };
