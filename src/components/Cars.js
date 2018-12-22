@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { carsActions } from '../store/actions';
@@ -10,6 +11,10 @@ const mapStateToProps = state => ({
   cars: state.getIn(['cars', 'cars'])
 });
 
+const StyledCars = styled.div`
+  grid-area: cars;
+`;
+
 class Cars extends Component {
   componentWillMount() {
     this.props.fetchCars();
@@ -19,7 +24,7 @@ class Cars extends Component {
     const { cars } = this.props;
 
     return (
-      <Fragment>
+      <StyledCars>
         {cars.map(obj => {
           const car = carsHelpers.getCarDetailsForCard(obj);
           return (
@@ -31,7 +36,7 @@ class Cars extends Component {
             </Card>
           );
         })}
-      </Fragment>
+      </StyledCars>
     );
   }
 }

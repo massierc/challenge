@@ -11,6 +11,13 @@ import Subtitle from '../elements/Subtitle';
 
 const Index = styled.div`
   display: grid;
+  grid-template-columns: 30% ${props => props.theme.spacing.l} calc(70% - 1em);
+  grid-template-row: 80px 100px auto;
+  grid-template-areas:
+    'filter . heading'
+    'filter . cars'
+    '. . cars';
+  padding: ${props => props.theme.spacing.m};
 `;
 
 const IndexPage = () => {
