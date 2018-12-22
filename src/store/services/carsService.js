@@ -2,7 +2,6 @@ import { queryHelpers } from '../../helpers';
 import { fromJS } from 'immutable';
 
 const fetchCars = params => {
-  console.log(params ? queryHelpers.addParams(params) : '');
   return fetch(
     `${process.env.REACT_APP_MOCK_SERVER_URL}/cars${
       params ? queryHelpers.addParams(params) : ''

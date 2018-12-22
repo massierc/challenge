@@ -14,7 +14,7 @@ const getCarDetailsForCard = obj => {
 
   return {
     id: car.id,
-    friendlyId: `/${car.manufacturer}-${car.model}-${car.id}`,
+    url: `/${toUrl(car)}`,
     image: car.image,
     header: `${car.manufacturer} ${car.model}`,
     description: `Stock # ${car.id} - ${formatHelpers.numberWithSeparator(
@@ -22,6 +22,20 @@ const getCarDetailsForCard = obj => {
     )} ${car.unit.toUpperCase()} - ${car.fuel} - ${car.color}`
   };
 };
+
+const toUrl = ({ id, manufacturer, model }) => {
+  const safeManufacturer = safeUri(manufacturer);
+  const safeModel = safeUri(model);
+  return `${safeManufacturer}-${safeModel}-${id}`;
+};
+
+const safeUri = str =>
+  encodeURIComponent(
+    str
+      .toLowerCase()
+      .split(' ')
+      .join('-')
+  );
 
 const carsHelpers = { getCarDetailsForCard };
 

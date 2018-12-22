@@ -37,7 +37,7 @@ class Cars extends Component {
               <Card.Image src={car.image} />
               <Card.Header>{car.header}</Card.Header>
               <Card.Description>{car.description}</Card.Description>
-              <Card.Link to={car.friendlyId}>View Details</Card.Link>
+              <Card.Link to={car.url}>View Details</Card.Link>
             </Card>
           );
         })}
