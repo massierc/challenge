@@ -4,6 +4,15 @@ const indexSubtitle = state => {
   return `Showing ${current} of ${total} results`;
 };
 
-const viewHelpers = { indexSubtitle };
+const currentPage = (which, current, total) =>
+  which === 'previous'
+    ? current - 1
+    : which === 'next'
+    ? current + 1
+    : which === 'last'
+    ? total
+    : 1;
+
+const viewHelpers = { indexSubtitle, currentPage };
 
 export default viewHelpers;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { carsActions } from '../store/actions';
+import { viewHelpers } from '../helpers';
 
 import A from '../elements/A';
 import Text from '../elements/Text';
@@ -33,57 +34,45 @@ class Pagination extends Component {
 
   handleClick = which => () => {
     const { current } = this.state;
-    const { total, fetchCars } = this.props;
+    const { total } = this.props;
+    const { isWithinPageLimits, goTo } = this;
+    const { currentPage } = viewHelpers;
 
-    switch (which) {
-      case 'first': {
-        const page = 1;
-        fetchCars({ page: page });
-        this.setState({ current: page });
-        break;
-      }
-      case 'previous': {
-        const page = current - 1;
-        fetchCars({ page: page });
-        this.setState({ current: page });
-        break;
-      }
-      case 'next': {
-        const page = current + 1;
-        fetchCars({ page: page });
-        this.setState({ current: page });
-        break;
-      }
-      case 'last': {
-        const page = total;
-        fetchCars({ page: page });
-        this.setState({ current: page });
-        break;
-      }
-      default:
-        break;
-    }
+    if (isWithinPageLimits(which, current, total))
+      goTo(currentPage(which, current, total));
+  };
+
+  isWithinPageLimits = (which, current, total) =>
+    !(
+      (which === 'previous' && current === 1) ||
+      (which === 'next' && current === total)
+    );
+
+  goTo = page => {
+    this.props.fetchCars({ page: page });
+    this.setState({ current: page });
   };
 
   render() {
     const { current } = this.state;
     const { total } = this.props;
+    const { handleClick } = this;
 
     return (
       <StyledPagination>
-        <StyledA as="span" onClick={this.handleClick('first')}>
+        <StyledA as="span" onClick={handleClick('first')}>
           First
         </StyledA>
-        <StyledA as="span" onClick={this.handleClick('previous')}>
+        <StyledA as="span" onClick={handleClick('previous')}>
           Previous
         </StyledA>
         <StyledText size={2}>
           Page {current} of {total}
         </StyledText>
-        <StyledA as="span" onClick={this.handleClick('next')}>
+        <StyledA as="span" onClick={handleClick('next')}>
           Next
         </StyledA>
-        <StyledA as="span" onClick={this.handleClick('last')}>
+        <StyledA as="span" onClick={handleClick('last')}>
           Last
         </StyledA>
       </StyledPagination>
