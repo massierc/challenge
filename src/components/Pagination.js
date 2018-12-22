@@ -8,7 +8,8 @@ import A from '../elements/A';
 import Text from '../elements/Text';
 
 const mapStateToProps = state => ({
-  total: state.getIn(['cars', 'totalPageCount'])
+  total: state.getIn(['cars', 'totalPageCount']),
+  current: state.getIn(['cars', 'currentPage'])
 });
 
 const StyledPagination = styled.div`
@@ -28,18 +29,19 @@ const StyledText = styled(Text)`
 `;
 
 class Pagination extends Component {
-  state = {
-    current: 1
-  };
-
   handleClick = which => () => {
-    const { current } = this.state;
-    const { total } = this.props;
-    const { isWithinPageLimits, goTo } = this;
-    const { currentPage } = viewHelpers;
+    const { total, current } = this.props;
+    const page =
+      which === 'previous'
+        ? current - 1
+        : which === 'next'
+        ? current + 1
+        : which === 'last'
+        ? total
+        : 1;
 
-    if (isWithinPageLimits(which, current, total))
-      goTo(currentPage(which, current, total));
+    if (this.isWithinPageLimits(which, current, total))
+      this.props.fetchCars({ page: page });
   };
 
   isWithinPageLimits = (which, current, total) =>
@@ -48,14 +50,8 @@ class Pagination extends Component {
       (which === 'next' && current === total)
     );
 
-  goTo = page => {
-    this.props.fetchCars({ page: page });
-    this.setState({ current: page });
-  };
-
   render() {
-    const { current } = this.state;
-    const { total } = this.props;
+    const { total, current } = this.props;
     const { handleClick } = this;
 
     return (

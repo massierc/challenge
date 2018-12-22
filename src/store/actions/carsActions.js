@@ -5,6 +5,10 @@ const fetchCars = params => dispatch => {
   carsService
     .fetchCars(params)
     .then(cars => dispatch({ type: carsConstants.FETCH_CARS, payload: cars }))
+    .finally(() => {
+      if (params && params.page)
+        dispatch({ type: carsConstants.SET_PAGE, payload: params.page });
+    })
     .catch(err => console.log(err));
 };
 

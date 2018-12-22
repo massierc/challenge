@@ -6,7 +6,8 @@ const initialState = Map({
   cars: List(),
   totalPageCount: null,
   colors: List(),
-  manufacturers: List()
+  manufacturers: List(),
+  currentPage: 1
 });
 
 const carsReducer = (state = initialState, action) => {
@@ -32,6 +33,9 @@ const carsReducer = (state = initialState, action) => {
           label: formatHelpers.capitalize(man.get('name'))
         }))
       );
+    case carsConstants.SET_PAGE:
+      if (!action.payload) return;
+      return state.set('currentPage', action.payload);
     default:
       return state;
   }

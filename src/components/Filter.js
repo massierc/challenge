@@ -35,12 +35,15 @@ class Filter extends Component {
   };
 
   handleSubmit = event => {
-    const { color, manufacturer } = this.state;
-    this.props.fetchCars({
-      color: color ? color.value : '',
-      manufacturer: manufacturer ? manufacturer.value : ''
-    });
     event.preventDefault();
+    const { color, manufacturer } = this.state;
+    if (!color && !manufacturer) return;
+    let query = {
+      color: color ? color.value : '',
+      manufacturer: manufacturer ? manufacturer.value : '',
+      page: 1
+    };
+    this.props.fetchCars(query);
   };
 
   render() {
