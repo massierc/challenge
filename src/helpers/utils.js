@@ -37,12 +37,37 @@ const getMarginFromProp = props => () => {
   }
 };
 
+const toggleFavourite = car => {
+  const fav = localStorage.getItem('favourites');
+  if (fav || JSON.parse(fav).length === 0) {
+    const parsed = JSON.parse(fav);
+    const exists = parsed.find(id => id === car.id);
+    if (exists) {
+      localStorage.setItem(
+        'favourites',
+        JSON.stringify(parsed.filter(id => id !== car.id))
+      );
+    } else {
+      localStorage.setItem('favourites', JSON.stringify([...parsed, car.id]));
+    }
+  } else {
+    localStorage.setItem('favourites', JSON.stringify([car.id]));
+  }
+};
+
+const isFavourite = car => {
+  const fav = localStorage.getItem('favourites');
+  return fav && JSON.parse(fav).find(id => id === car.id);
+};
+
 const utils = {
   toUrl,
   safeUri,
   numberWithSeparator,
   capitalize,
-  getMarginFromProp
+  getMarginFromProp,
+  toggleFavourite,
+  isFavourite
 };
 
 export default utils;
