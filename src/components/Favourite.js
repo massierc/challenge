@@ -18,26 +18,18 @@ class Favourite extends Component {
   };
 
   render() {
-    if (this.state.favourite) {
-      return (
-        <Box>
-          <Box.Text size={1}>
-            This car is in your collection of favourite items.
-          </Box.Text>
-          <Box.Button onClick={this.handleClick}>Remove</Box.Button>
-        </Box>
-      );
-    } else {
-      return (
-        <Box>
-          <Box.Text size={1}>
-            If you like this car, click the button and save it in your
-            collection of favourite items.
-          </Box.Text>
-          <Box.Button onClick={this.handleClick}>Save</Box.Button>
-        </Box>
-      );
-    }
+    return (
+      <Box>
+        <Box.Text size={1}>
+          {this.state.favourite
+            ? 'This car is in your collection of favourite items.'
+            : 'If you like this car, click the button and save it in your collection of favourite items.'}
+        </Box.Text>
+        <Box.Button onClick={this.handleClick}>
+          {this.state.favourite ? 'Remove' : 'Save'}
+        </Box.Button>
+      </Box>
+    );
   }
 }
 
