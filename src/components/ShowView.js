@@ -20,7 +20,11 @@ class ShowPage extends Component {
     const { loading } = this.props;
 
     if (loading) {
-      return <div>Loading...</div>;
+      return (
+        <Car>
+          <Car.Banner />
+        </Car>
+      );
     } else {
       const car = viewHelpers.parseCar(this.props.car);
       return (
