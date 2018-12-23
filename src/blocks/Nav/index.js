@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import Logo from './Logo';
+
 import Link from './Link';
+import Logo from '../../elements/Logo';
 
 const Nav = styled.nav`
   display: grid;

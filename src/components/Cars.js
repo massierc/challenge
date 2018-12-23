@@ -28,7 +28,7 @@ class Cars extends Component {
 
   handleClick = car => () => {
     this.props.fetchCar(car.id);
-    this.props.history.push(car.url);
+    this.props.history.push(`/cars${car.url}`);
   };
 
   render() {

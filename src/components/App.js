@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import IndexView from './IndexView';
 import ShowView from './ShowView';
-import NotFound from './NotFound';
+import NotFoundView from './NotFoundView';
 import Nav from '../blocks/Nav';
 import Footer from '../blocks/Footer';
 import A from '../elements/A';
@@ -31,11 +31,7 @@ class App extends Component {
             <BrowserRouter>
               <div>
                 <Nav>
-                  <Nav.Logo
-                    as={A}
-                    to="/"
-                    src={`${process.env.PUBLIC_URL}/logo.png`}
-                  />
+                  <Nav.Logo as={A} to="/" />
                   <Nav.Link to="#" id={`nav-link-${0}`}>
                     Purchase
                   </Nav.Link>
@@ -48,8 +44,8 @@ class App extends Component {
                 </Nav>
                 <Switch>
                   <Route exact path="/" component={IndexView} />
-                  <Route path="/:carId" component={ShowView} />
-                  <Route component={NotFound} />
+                  <Route path="/cars/:carId" component={ShowView} />
+                  <Route component={NotFoundView} />
                 </Switch>
                 <Footer>
                   <Footer.Content>© AUTO1 Group 2018</Footer.Content>
