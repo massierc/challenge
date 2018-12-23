@@ -33,7 +33,7 @@ class Cars extends Component {
   render() {
     return (
       <StyledSort>
-        <FormGroup>
+        <FormGroup spacing="0">
           <Label>Sort by</Label>
           <Select
             options={[

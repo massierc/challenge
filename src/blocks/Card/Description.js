@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Text from '../../elements/Text';
+import Span from '../../elements/Span';
 
-const Description = styled(Text)`
+const Description = styled(Span)`
   grid-area: description;
   padding-bottom: ${props => props.theme.spacing.m};
 `;

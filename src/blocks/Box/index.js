@@ -5,6 +5,7 @@ import Text from './Text';
 import Button from './Button';
 
 const Box = styled.div`
+  grid-area: box;
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;

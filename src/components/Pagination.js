@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { carsActions } from '../store/actions';
 
 import A from '../elements/A';
-import Text from '../elements/Text';
+import Span from '../elements/Span';
 
 const mapStateToProps = state => ({
   total: state.getIn(['cars', 'totalPageCount']),
@@ -23,7 +23,7 @@ const StyledA = styled(A)`
   padding: 0 ${props => props.theme.spacing.m};
 `;
 
-const StyledText = styled(Text)`
+const StyledSpan = styled(Span)`
   padding: 0 ${props => props.theme.spacing.m};
 `;
 
@@ -64,9 +64,9 @@ class Pagination extends Component {
         <StyledA as="span" onClick={handleClick('previous')}>
           Previous
         </StyledA>
-        <StyledText size={2}>
+        <StyledSpan size={2}>
           Page {current} of {total}
-        </StyledText>
+        </StyledSpan>
         <StyledA as="span" onClick={handleClick('next')}>
           Next
         </StyledA>
