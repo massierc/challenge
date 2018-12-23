@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import compose from 'recompose/compose';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -23,6 +25,11 @@ class Cars extends Component {
   componentDidMount() {
     this.props.fetchCars(this.props.params);
   }
+
+  handleClick = car => () => {
+    this.props.fetchCar(car.id);
+    this.props.history.push(car.url);
+  };
 
   render() {
     const { cars, loading } = this.props;
@@ -53,7 +60,9 @@ class Cars extends Component {
                 <Card.Image src={car.image} />
                 <Card.Header>{car.header}</Card.Header>
                 <Card.Description>{car.description}</Card.Description>
-                <Card.Link to={car.url}>View Details</Card.Link>
+                <Card.Link as="span" onClick={this.handleClick(car)}>
+                  View Details
+                </Card.Link>
               </Card>
             );
           })}
@@ -67,7 +76,10 @@ Cars.propTypes = {
   cars: PropTypes.object.isRequired
 };
 
-export default connect(
-  mapStateToProps,
-  carsActions
+export default compose(
+  connect(
+    mapStateToProps,
+    carsActions
+  ),
+  withRouter
 )(Cars);

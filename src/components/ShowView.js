@@ -11,10 +11,6 @@ const mapStateToProps = state => ({
 });
 
 class ShowPage extends Component {
-  state = {
-    loading: true
-  };
-
   componentDidMount() {
     const id = this.props.match.params.carId.match(/\d+$/)[0];
     this.props.fetchCar(id);
