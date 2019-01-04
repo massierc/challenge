@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { viewHelpers } from '../helpers';
@@ -40,6 +41,14 @@ const IndexView = props => {
       <Pagination />
     </Index>
   );
+};
+
+IndexView.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps)(IndexView);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { carsActions } from '../store/actions';
@@ -77,6 +78,15 @@ class Pagination extends Component {
     );
   }
 }
+
+Pagination.propTypes = {
+  total: PropTypes.number,
+  params: PropTypes.object.isRequired,
+  fetchCars: PropTypes.func.isRequired,
+  fetchCar: PropTypes.func.isRequired,
+  fetchColors: PropTypes.func.isRequired,
+  fetchManufacturers: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

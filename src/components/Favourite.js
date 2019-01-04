@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { utils } from '../helpers';
 
 import Box from '../blocks/Box';
@@ -32,5 +33,9 @@ class Favourite extends Component {
     );
   }
 }
+
+Favourite.propTypes = {
+  car: PropTypes.object.isRequired
+};
 
 export default Favourite;

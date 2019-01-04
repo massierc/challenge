@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from '../Card';
 
-const CardLoading = () => {
+const CardLoading = props => {
   return (
-    <Card>
+    <Card {...props}>
       <Card.Placeholder
         width="100%"
         height="100%"

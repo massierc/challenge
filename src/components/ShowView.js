@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { carsActions } from '../store/actions';
 import { viewHelpers } from '../helpers';
@@ -36,6 +37,18 @@ class ShowPage extends Component {
     }
   }
 }
+
+ShowPage.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  car: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  fetchCars: PropTypes.func.isRequired,
+  fetchCar: PropTypes.func.isRequired,
+  fetchColors: PropTypes.func.isRequired,
+  fetchManufacturers: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,

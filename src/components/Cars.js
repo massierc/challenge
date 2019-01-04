@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import compose from 'recompose/compose';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { carsActions } from '../store/actions';
 import { viewHelpers } from '../helpers';
 
@@ -73,7 +73,16 @@ class Cars extends Component {
 }
 
 Cars.propTypes = {
-  cars: PropTypes.object.isRequired
+  cars: PropTypes.object.isRequired,
+  params: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  fetchCars: PropTypes.func.isRequired,
+  fetchCar: PropTypes.func.isRequired,
+  fetchColors: PropTypes.func.isRequired,
+  fetchManufacturers: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default compose(

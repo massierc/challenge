@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Logo from '../elements/Logo';
@@ -44,6 +45,12 @@ const NotFoundView = () => {
       </StyledSubtitle>
     </StyledNotFoundView>
   );
+};
+
+NotFoundView.propTypes = {
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default NotFoundView;

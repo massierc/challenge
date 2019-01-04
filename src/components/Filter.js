@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Map } from 'immutable';
 import { carsActions } from '../store/actions';
 
@@ -77,7 +77,11 @@ class Filter extends Component {
 
 Filter.propTypes = {
   colors: PropTypes.object.isRequired,
-  manufacturers: PropTypes.object.isRequired
+  manufacturers: PropTypes.object.isRequired,
+  fetchCars: PropTypes.func.isRequired,
+  fetchCar: PropTypes.func.isRequired,
+  fetchColors: PropTypes.func.isRequired,
+  fetchManufacturers: PropTypes.func.isRequired
 };
 
 export default connect(

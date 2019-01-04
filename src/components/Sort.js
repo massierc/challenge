@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { carsActions } from '../store/actions';
 
 import FormGroup from '../elements/FormGroup';
@@ -16,7 +16,7 @@ const StyledSort = styled.div`
   grid-area: sort;
 `;
 
-class Cars extends Component {
+class Sort extends Component {
   state = {
     sort: { value: 'None', label: 'None' }
   };
@@ -50,7 +50,15 @@ class Cars extends Component {
   }
 }
 
+Sort.propTypes = {
+  params: PropTypes.object.isRequired,
+  fetchCars: PropTypes.func.isRequired,
+  fetchCar: PropTypes.func.isRequired,
+  fetchColors: PropTypes.func.isRequired,
+  fetchManufacturers: PropTypes.func.isRequired
+};
+
 export default connect(
   mapStateToProps,
   carsActions
-)(Cars);
+)(Sort);
