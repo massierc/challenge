@@ -38,20 +38,17 @@ const getMarginFromProp = props => () => {
 };
 
 const toggleFavourite = car => {
-  const fav = localStorage.getItem('favourites');
-  if (fav || JSON.parse(fav).length === 0) {
-    const parsed = JSON.parse(fav);
-    const exists = parsed.find(id => id === car.id);
-    if (exists) {
-      localStorage.setItem(
-        'favourites',
-        JSON.stringify(parsed.filter(id => id !== car.id))
-      );
-    } else {
-      localStorage.setItem('favourites', JSON.stringify([...parsed, car.id]));
-    }
-  } else {
+  const fav = JSON.parse(localStorage.getItem('favourites'));
+  if (!fav || fav.length === 0) {
     localStorage.setItem('favourites', JSON.stringify([car.id]));
+  } else {
+    const exists = fav.find(id => id === car.id);
+    if (exists) {
+      const filtered = JSON.stringify(fav.filter(id => id !== car.id));
+      localStorage.setItem('favourites', filtered);
+    } else {
+      localStorage.setItem('favourites', JSON.stringify([...fav, car.id]));
+    }
   }
 };
 
